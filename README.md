@@ -2,7 +2,7 @@
 
 ### Optimistic Locking, projedeki işlemlerin birbirlerini etkilemeden gerçekleşeceğine inanarak hareket eder, fakat Pessimistic Locking biraz şüpheci olacağından karamsar bir yapıdadır. Fakat deadlocklar ile karşılaşılabilir.
 ### Herhangi bir repository katmanında Lock anatasyonu kullanılacaksa ilgili serviste de aryıca @Transactional anatasyonu kullanılmalıdır.
-### Optimistic Locking verileri versiyonlar (@Version anatasyonu ile), Pessimistic, locklar.
+### Optimistic Locking verileri versiyonlar (@Version anatasyonu ile). Pessimistic, locklar.
 
 ### Bu projede farklı lock mekanizmaları commentlidir. Conccurrencyi daha iyi görünebilmesi için alt satırda yer alan komut ile test edilebilir :)
 
