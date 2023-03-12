@@ -5,6 +5,7 @@ import com.lock101.model.Customer;
 import com.lock101.service.CustomerService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -25,6 +26,11 @@ public class CustomerController {
 
     @GetMapping("/inc")
     void increment() {
-       this.customerService.increment();
+        this.customerService.increment();
+    }
+
+    @GetMapping("/{id}")
+    Customer getCustomer(@PathVariable() Long id) {
+        return this.customerService.getCustomer(id);
     }
 }

@@ -3,8 +3,8 @@ package com.lock101.service;
 import com.lock101.model.Customer;
 import com.lock101.repository.CustomerRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Isolation;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.math.BigDecimal;
@@ -18,10 +18,11 @@ public class CustomerService {
     private final CustomerRepository customerRepository;
 
     @Transactional
+    @Cacheable(value = "customer")
     public List<Customer> getCustomers() {
         try {
-            Thread.sleep(4000);
-        } catch(InterruptedException e) {
+            Thread.sleep(100);
+        } catch (InterruptedException e) {
             throw new RuntimeException();
         }
 
@@ -34,5 +35,10 @@ public class CustomerService {
         Customer c = this.customerRepository.findByName("Eray");
         c.setBalance(c.getBalance().add(BigDecimal.ONE));
         this.customerRepository.save(c);
+    }
+
+    @Transactional
+    public Customer getCustomer(Long id) {
+        return this.customerRepository.findById(id).get();
     }
 }
